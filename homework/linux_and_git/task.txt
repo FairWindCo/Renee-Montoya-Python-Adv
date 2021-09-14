@@ -169,3 +169,4 @@ GIT
 31*. Resolve conflict and push the changes to remote
     git add .\second.py
     git add ..\linux_and_git\task.txt
+    git push git@github.com:FairWindCo/Renee-Montoya-Python-Adv
