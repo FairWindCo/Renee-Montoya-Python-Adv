@@ -150,10 +150,15 @@ GIT
     echo "print("Cursor")" >second.py
 
 25. Add your changes to the staging area
-
+    git add --all
 26. Commit with the message "Changing second.py".
+    git commit -m "Changing second.py"
+
 27. Push your changes to remote
+    git push git@github.com:FairWindCo/Renee-Montoya-Python-Adv
 28. Checkout to master branch
+    git checkout master
+
 29*. Merge the changes from second branch
 30*. Then merge the changes from first branch
 31*. Resolve conflict and push the changes to remote
