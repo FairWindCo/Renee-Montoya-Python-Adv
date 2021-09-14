@@ -133,10 +133,18 @@ GIT
 19. Checkout back and Stash Pop the changes.
     git checkout second
     git stash pop
+
 20. Add your changes to the staging area
+    git add .
+
 21. Commit with the message "Changing second.py".
+    git commit -m "Changing second.py"
+
 22. Push your changes to remote
+    git push
+
 23. Checkout to first branch.
+
 24. Change the second.py file with print("Cursor") string.
 25. Add your changes to the staging area
 26. Commit with the message "Changing second.py".
