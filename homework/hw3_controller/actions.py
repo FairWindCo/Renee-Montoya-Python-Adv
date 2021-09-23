@@ -33,8 +33,14 @@ class AddNewPlantAction(BaseAction):
         except Exception as _:
             location = input("Location: ")
             name = input("Name: ")
-            director_id = int(input("Director ID: "))
-            plant = Plant(id, location, name, director_id)
+            # director_id = int(input("Director ID: "))
+            email = input('Director E-Mail: ')
+            try:
+                empl = Employee.search_by_email(email)
+            except Exception as _:
+                print('Email not Found')
+                return
+            plant = Plant(id, location, name, empl.id)
             plant.save()
 
 
@@ -92,4 +98,4 @@ class ListAllEmployeeAction(BaseAction):
 
     def execute(self):
         for emp in Employee.get_all():
-            print(f'id={emp.id} name={emp.name}')
+            print(f'id={emp.id} name={emp.name} {emp.email}')

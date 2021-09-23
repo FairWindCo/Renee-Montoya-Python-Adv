@@ -1,5 +1,5 @@
-from abc import ABC, abstractmethod
 import json
+from abc import ABC
 
 
 class Model(ABC):
@@ -11,9 +11,8 @@ class Model(ABC):
         objs.append(obj_in_dict_format)
         self.save_to_file(objs)
 
-    @abstractmethod
     def _generate_dict(self):
-        pass
+        return {field_name: getattr(self, field_name) for field_name in self.__dict__}
 
     @classmethod
     def get_by_id(cls, id):
