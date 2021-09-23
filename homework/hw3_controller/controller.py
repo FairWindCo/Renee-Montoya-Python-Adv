@@ -7,7 +7,7 @@ class Controller:
         print('"Choose a menu item by number:')
         for index, action in enumerate(self.actions):
             print(f'{index + 1}. {action.get_action_name()}')
-        print('0. Exit')
+        print('0. Exit from app')
 
     def run(self):
         if self.actions:
