@@ -82,4 +82,14 @@ class ListAllPlantsAction(BaseAction):
 
     def execute(self):
         for plant in Plant.get_all():
-            print(f'{plant["id"]} {plant["name"]}')
+            print(f'id={plant.id} name={plant.name}')
+
+
+class ListAllEmployeeAction(BaseAction):
+
+    def __init__(self):
+        super().__init__('List All Employee')
+
+    def execute(self):
+        for emp in Employee.get_all():
+            print(f'id={emp.id} name={emp.name}')

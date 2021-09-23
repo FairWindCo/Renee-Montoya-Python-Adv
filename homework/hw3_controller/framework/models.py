@@ -5,7 +5,6 @@ import json
 class Model(ABC):
     file = 'default.json'
 
-    @abstractmethod
     def save(self):
         obj_in_dict_format = self._generate_dict()
         objs = self.get_file_data(self.file)
@@ -21,14 +20,14 @@ class Model(ABC):
         data = cls.get_file_data(cls.file)
         for el in data:
             if el['id'] == id:
-                return el
+                return cls(**el)
 
         raise Exception("Not found")
 
     @classmethod
     def get_all(cls):
         data = cls.get_file_data(cls.file)
-        return data
+        return map(lambda el: cls(**el), data)
 
     @staticmethod
     def get_file_data(file_name):

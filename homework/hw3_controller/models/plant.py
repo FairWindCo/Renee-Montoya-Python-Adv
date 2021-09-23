@@ -17,3 +17,6 @@ class Plant(Model):
             'name': self.name,
             'director_id': self.director_id
         }
+
+    def __str__(self):
+        return f'Plant(id={self.id}, name={self.name}, location={self.location} director_id={self.director_id})'

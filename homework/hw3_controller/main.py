@@ -1,5 +1,5 @@
 from actions import AddNewEmployeeAction, AddNewPlantAction, GetEmployeeByIdAction, GetPlantByIdAction, \
-    ListAllPlantsAction
+    ListAllPlantsAction, ListAllEmployeeAction
 from controller import Controller
 
 if __name__ == '__main__':
@@ -9,5 +9,6 @@ if __name__ == '__main__':
         GetPlantByIdAction(),
         GetEmployeeByIdAction(),
         ListAllPlantsAction(),
+        ListAllEmployeeAction(),
     )
     controller.run()
