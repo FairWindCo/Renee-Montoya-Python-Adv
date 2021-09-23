@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 
-from models.plant import Plant
 from models.employee import Employee
+from models.plant import Plant
+
 
 class BaseAction(ABC):
     def __init__(self, name):
@@ -21,12 +22,20 @@ class AddNewPlantAction(BaseAction):
         super().__init__('Add new Plant')
 
     def execute(self):
-        id = int(input("ID: "))
-        location = input("Location: ")
-        name = input("Name: ")
-        director_id = int(input("Director ID: "))
-        plant = Plant(id, location, name, director_id)
-        plant.save()
+        try:
+            id = int(input("ID: "))
+        except ValueError:
+            print('Only integer value is allowed!')
+            return
+        try:
+            plant = Plant.get_by_id(id)
+            print(f'Plant with id={id} and name={plant["name"]} - already exists')
+        except Exception as _:
+            location = input("Location: ")
+            name = input("Name: ")
+            director_id = int(input("Director ID: "))
+            plant = Plant(id, location, name, director_id)
+            plant.save()
 
 
 class AddNewEmployeeAction(BaseAction):
@@ -65,3 +74,12 @@ class GetPlantByIdAction(BaseAction):
         plant = Plant.get_by_id(id)
         print(plant)
 
+
+class ListAllPlantsAction(BaseAction):
+
+    def __init__(self):
+        super().__init__('List All Plants')
+
+    def execute(self):
+        for plant in Plant.get_all():
+            print(f'{plant["id"]} {plant["name"]}')

@@ -19,9 +19,3 @@ class Employee(Model):
             'department_type': self.department_type,
             'department_id': self.department_id
         }
-
-    def save(self):
-        employees_in_dict_format = self._generate_dict()
-        employees = self.get_file_data(self.file)
-        employees.append(employees_in_dict_format)
-        self.save_to_file(employees)

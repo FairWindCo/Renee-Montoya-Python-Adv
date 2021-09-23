@@ -7,7 +7,10 @@ class Model(ABC):
 
     @abstractmethod
     def save(self):
-        pass
+        obj_in_dict_format = self._generate_dict()
+        objs = self.get_file_data(self.file)
+        objs.append(obj_in_dict_format)
+        self.save_to_file(objs)
 
     @abstractmethod
     def _generate_dict(self):
@@ -29,13 +32,11 @@ class Model(ABC):
 
     @staticmethod
     def get_file_data(file_name):
-        file = open("database/" + file_name, 'r')
-        data = json.loads(file.read())
-        file.close()
-        return data
+        with open("database/" + file_name, 'r') as file:
+            data = json.loads(file.read())
+            return data
 
     def save_to_file(self, data):
         data = json.dumps(data)
-        file = open('database/' + self.file, "w")
-        file.write(data)
-        file.close()
+        with open('database/' + self.file, "w") as file:
+            file.write(data)
