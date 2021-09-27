@@ -19,5 +19,5 @@ class Controller:
                         self.actions[select_value].execute()
                     elif select_value == -1:
                         break
-                except Exception as e:
-                    print(e)
+                except ValueError as e:
+                    print('Incorrect input, please try again')
