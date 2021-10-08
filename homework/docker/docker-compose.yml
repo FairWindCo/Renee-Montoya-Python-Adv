@@ -4,19 +4,10 @@ services:
   app:
     build:
       context: ./
-      dockerfile: ./docker/python/Dockerfile
-    container_name: 'app-docker'
+      dockerfile: ./container/flask/Dockerfile
+    container_name: 'flask-app-docker'
     volumes:
-      - .:/application
+      - .:/app
     ports:
-      - "8081:8080"
-
-  mysql:
-    image: mysql:8.0.26
-    volumes:
-      - ./docker/data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "5632:3306"
+      - "8080:8080"
 
