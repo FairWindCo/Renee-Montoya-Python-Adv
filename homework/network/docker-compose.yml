@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  flask:
+    build:
+      context: ./
+      dockerfile: container/docker/flask/Dockerfile
+    container_name: 'flask-hello-world-docker'
+    volumes:
+      - ./container/flask:/application
+    ports:
+      - "8080:8080"
