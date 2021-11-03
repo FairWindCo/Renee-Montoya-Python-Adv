@@ -13,6 +13,15 @@ class Todo(Resource):
         todos.append(request.json)
         return todos
 
+
+class TodoEditor(Resource):
+    def get(self, id):
+        if 0 <= id < len(todos):
+            return todos[id]
+        else:
+            abort(404, message="Todo {} doesn't exist".format(id))
+
+
     def patch(self, id):
         if 0 <= id < len(todos):
             todos[id] = request.json
@@ -29,3 +38,4 @@ class Todo(Resource):
 
 
 api.add_resource(Todo, "/api/v1/todos")
+api.add_resource(TodoEditor, "/api/v1/todos/<int:id>")
