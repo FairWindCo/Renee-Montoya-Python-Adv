@@ -8,5 +8,7 @@ with app.app_context():
     from routes.main import *
     from routes.api.plants import *
     from routes.api.employees import *
+    from routes.api.salons import *
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
