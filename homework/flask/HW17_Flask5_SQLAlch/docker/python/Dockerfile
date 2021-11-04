@@ -5,4 +5,4 @@ WORKDIR /application
 COPY ./requirements.txt /application/requirements.txt
 RUN pip install -r requirements.txt
 
-CMD python3 app.py
+CMD wait-for-it.sh db:3306 -t 3 -- python3 app.py
