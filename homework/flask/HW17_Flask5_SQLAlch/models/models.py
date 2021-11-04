@@ -58,3 +58,37 @@ class Employee(db.Model):
             'department_type': self.department_type,
             'department_id': self.department_id
         }
+
+
+class Salon(db.Model):
+    __tablename__ = "salons"
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+    city = db.Column(
+        db.String(120),
+        nullable=False
+    )
+    name = db.Column(
+        db.String(255),
+        nullable=False
+    )
+    address = db.Column(
+        db.String(255),
+        nullable=False
+    )
+    director_id = db.Column(
+        db.Integer,
+        nullable=False
+    )
+
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'city': self.city,
+            'address': self.address,
+            'name': self.name,
+            'director_id': self.director_id
+        }

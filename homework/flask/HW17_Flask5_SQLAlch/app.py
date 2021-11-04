@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
+import pymysql
 
 db = SQLAlchemy()
 app = Flask(__name__)
@@ -12,8 +13,10 @@ with app.app_context():
     from routes.main import *
     from routes.api.plants import *
     from routes.api.employees import *
-    from models import Plant, Employee
+    from routes.api.salons import *
+    from models import Plant, Employee, Salon
 
     db.create_all()
 
-app.run(debug=True, host="0.0.0.0", port=8080)
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0", port=8080)
