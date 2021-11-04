@@ -14,7 +14,7 @@ class SalonResource(Resource):
 
     def post(self):
         data = request.json
-        salon = Salon(data['id'], data['location'], data['name'], data['director_id'])
+        salon = Salon(data['id'], data['name'], data['director_id'], data['city'], data['address'])
         salon.save()
         return salon._generate_dict()
 

@@ -127,3 +127,12 @@ class Salon(Model):
             element = self.get_by_id(self.id)
         except Exception:
             self.save_to_file(salon)
+
+    def _generate_dict(self):
+        return {
+            'id': self.id,
+            'city': self.city,
+            'address': self.address,
+            'name': self.name,
+            'director_id': self.director_id
+        }
